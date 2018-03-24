@@ -17,6 +17,6 @@ Example project of [Dirac](https://github.com/binaryage/dirac) and [Figwheel](ht
 * Eval `(dirac :join)`
 * Eval `(dirac :ls)`
 * Eval `(dirac :switch 2)`
-* Eval `(in-ns 'dirac-sample.demo)`
+* Eval `(in-ns 'dirac-figwheel-demo.demo)`
 * Eval `(+ 1 2)`
 * Eval `(run-breakpoint-demo)`

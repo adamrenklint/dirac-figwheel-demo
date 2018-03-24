@@ -14,7 +14,9 @@
   :clean-targets ^{:protect false} ["target"
                                     "resources/public/.compiled"
                                     "resources/demo-node/.compiled"]
-  :cljsbuild {:builds {}}                                                                                                     ; prevent https://github.com/emezeske/lein-cljsbuild/issues/413
+  :cljsbuild {:builds {}}                                                                                                   ; prevent https://github.com/emezeske/lein-cljsbuild/issues/413
+
+  :jvm-opts     ["--add-modules" "java.xml.bind"]
 
   :profiles {:repl
              {:repl-options {:port             8230
@@ -52,15 +54,6 @@
                                                                                 :optimizations :none
                                                                                 :source-map    true}}]})
                                                 (dirac.agent/boot!)
-                                                #_(cljs-repl))}}]
-             :checkouts
-             {:checkout-deps-shares ^:replace [:source-paths
-                                               :test-paths
-                                               :resource-paths
-                                               :compile-path
-                                               #=(eval leiningen.core.classpath/checkout-deps-paths)]
-              :cljsbuild {:builds
-                          {:democ
-                           {:source-paths ["checkouts/cljs-devtools/src/lib"
-                                           "checkouts/dirac/src/runtime"]}}}}}
-  :aliases {"dev" ["with-profile" "+repl,+checkouts,+figwheel-nrepl" "repl"]})
+                                                #_(cljs-repl))}}]}
+
+  :aliases {"dev" ["with-profile" "+repl,+figwheel-nrepl" "repl"]})
